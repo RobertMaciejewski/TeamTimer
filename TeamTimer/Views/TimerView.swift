@@ -13,7 +13,9 @@ struct TimerView: View {
 
     var body: some View {
         Text(self.watch.text)
-            .font(.system(size: self.viewConfig.fontSize))
+            .font(.system(size: self.viewConfig.fontSizes.timer))
+            .frame(height: 60)
+            .frame(minWidth: 200, maxWidth: .infinity)
             .padding()
     }
 }
@@ -27,6 +29,6 @@ struct TimerView_Previews: PreviewProvider {
     static var previews: some View {
         TimerView(watch: self.watch)
             .environmentObject(ViewConfig())
-            .frame(width: 400, height: 300)
+            .frame(width: 200)
     }
 }

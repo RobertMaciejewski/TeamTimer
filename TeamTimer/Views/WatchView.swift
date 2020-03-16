@@ -13,17 +13,28 @@ struct WatchView: View {
     @ViewBuilder
     var body: some View {
         if self.watch.started {
-            TimerView(watch: self.watch)
+            self.timerView
         } else {
             TimerConfigView(watch: self.watch)
+        }
+    }
+
+    private var timerView: some View {
+        VStack(spacing: 0.0) {
+            TimerView(watch: self.watch)
+            ListSeparator()
         }
     }
 }
 
 struct WatchView_Previews: PreviewProvider {
+    static var watch: Watch {
+        let watch = Watch(id: 0)
+        watch.start()
+        return watch
+    }
     static var previews: some View {
-        return WatchView(watch: Watch(id: 0))
-            .frame(width: 400, height: 200)
+        return WatchView(watch: self.watch)
             .environmentObject(ViewConfig())
     }
 }

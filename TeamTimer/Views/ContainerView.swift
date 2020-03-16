@@ -13,13 +13,8 @@ struct ContainerView: View {
     var body: some View {
         VStack(spacing: 0) {
             ForEach(self.world.watches, id: \.id) { watch in
-                VStack(spacing: 0) {
-                    WatchView(watch: watch)
-                    ListSeparator()
-                }
+                WatchView(watch: watch)
             }
-            AddButton(action: self.addWatch)
-                .frame(maxWidth: .infinity)
         }
             .frame(minWidth: 400)
     }
@@ -33,6 +28,7 @@ struct ContainerView_Previews: PreviewProvider {
     private static var world: World {
         let world = World()
         world.addWatch()
+        world.watches.forEach { $0.start() }
         return world
     }
     static var previews: some View {

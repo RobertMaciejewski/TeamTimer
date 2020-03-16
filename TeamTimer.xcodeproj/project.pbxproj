@@ -10,7 +10,6 @@
 		F54763EA241CC77A003CD306 /* World.swift in Sources */ = {isa = PBXBuildFile; fileRef = F54763E9241CC77A003CD306 /* World.swift */; };
 		F54763ED241D2D93003CD306 /* Watch.swift in Sources */ = {isa = PBXBuildFile; fileRef = F54763EC241D2D93003CD306 /* Watch.swift */; };
 		F54763F0241DDEE9003CD306 /* TimerConfigView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F54763EF241DDEE9003CD306 /* TimerConfigView.swift */; };
-		F59F9780241E1201009F46A0 /* AddButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = F59F977F241E1201009F46A0 /* AddButton.swift */; };
 		F59F9788241E133F009F46A0 /* ListSeparator.swift in Sources */ = {isa = PBXBuildFile; fileRef = F59F9787241E133F009F46A0 /* ListSeparator.swift */; };
 		F59F978A241E13B0009F46A0 /* WatchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F59F9789241E13B0009F46A0 /* WatchView.swift */; };
 		F59F978C241E14BE009F46A0 /* TimerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F59F978B241E14BE009F46A0 /* TimerView.swift */; };
@@ -46,7 +45,6 @@
 		F54763E9241CC77A003CD306 /* World.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = World.swift; sourceTree = "<group>"; };
 		F54763EC241D2D93003CD306 /* Watch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Watch.swift; sourceTree = "<group>"; };
 		F54763EF241DDEE9003CD306 /* TimerConfigView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerConfigView.swift; sourceTree = "<group>"; };
-		F59F977F241E1201009F46A0 /* AddButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddButton.swift; sourceTree = "<group>"; };
 		F59F9787241E133F009F46A0 /* ListSeparator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListSeparator.swift; sourceTree = "<group>"; };
 		F59F9789241E13B0009F46A0 /* WatchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchView.swift; sourceTree = "<group>"; };
 		F59F978B241E14BE009F46A0 /* TimerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerView.swift; sourceTree = "<group>"; };
@@ -108,7 +106,6 @@
 			children = (
 				F5B5CD77241C63E90010CE27 /* ContainerView.swift */,
 				F54763EF241DDEE9003CD306 /* TimerConfigView.swift */,
-				F59F977F241E1201009F46A0 /* AddButton.swift */,
 				F59F9787241E133F009F46A0 /* ListSeparator.swift */,
 				F59F9789241E13B0009F46A0 /* WatchView.swift */,
 				F59F978B241E14BE009F46A0 /* TimerView.swift */,
@@ -310,7 +307,6 @@
 			files = (
 				F59F978C241E14BE009F46A0 /* TimerView.swift in Sources */,
 				F5B5CD78241C63E90010CE27 /* ContainerView.swift in Sources */,
-				F59F9780241E1201009F46A0 /* AddButton.swift in Sources */,
 				F59F978A241E13B0009F46A0 /* WatchView.swift in Sources */,
 				F54763F0241DDEE9003CD306 /* TimerConfigView.swift in Sources */,
 				F59F9788241E133F009F46A0 /* ListSeparator.swift in Sources */,

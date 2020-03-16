@@ -9,5 +9,10 @@ import Foundation
 import Combine
 
 class ViewConfig: ObservableObject {
-    @Published var fontSize: CGFloat = 32
+    struct FontSizes {
+        var timer: CGFloat = 32
+        var config: CGFloat = 16
+    }
+
+    @Published var fontSizes = FontSizes()
 }

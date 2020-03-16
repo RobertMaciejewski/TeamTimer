@@ -12,21 +12,19 @@ struct TimerConfigView: View {
     @ObservedObject var watch: Watch
 
     var body: some View {
-        VStack {
-            TextField(
-                "target", text: self.$watch.targetTimeText,
-                onEditingChanged: { editing in
-                    if !editing {
-                        self.watch.commitTargetTime()
-                    }
-                },
-                onCommit: { self.watch.start() }
-            )
-                .frame(maxWidth: .infinity, idealHeight: 200)
-                .textFieldStyle(PlainTextFieldStyle())
-                .font(.system(size: self.viewConfig.fontSize))
-                .padding()
-        }
+        TextField(
+            "target", text: self.$watch.targetTimeText,
+            onEditingChanged: { editing in
+                if !editing {
+                    self.watch.commitTargetTime()
+                }
+            },
+            onCommit: { self.watch.start() }
+        )
+            .frame(height: 40)
+            .frame(maxWidth: .infinity)
+            .textFieldStyle(PlainTextFieldStyle())
+            .font(.system(size: self.viewConfig.fontSizes.config))
     }
 }
 

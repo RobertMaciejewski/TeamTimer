@@ -18,9 +18,7 @@ class Watch: ObservableObject {
     @Published var time: TimeInterval? = nil {
         didSet { self.started = self.time != nil }
     }
-    @Published var targetTime: TimeInterval? = nil {
-        didSet { self.targetTimeText = self.timeConverter.encode(value: self.targetTimeConfig.value) ?? "" }
-    }
+    @Published var targetTime: TimeInterval? = nil
     @Published var started: Bool = false
 
     private var targetTimeConfig = CurrentValueSubject<TimeInterval?, Never>(nil)

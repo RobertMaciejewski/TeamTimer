@@ -10,7 +10,8 @@ import SwiftUI
 struct ListSeparator: View {
     var body: some View {
         Rectangle()
-            .frame(maxWidth: .infinity, maxHeight: 1)
+            .frame(height: 1)
+            .frame(maxWidth: .infinity)
             .foregroundColor(Color.black.opacity(0.2))
     }
 }
