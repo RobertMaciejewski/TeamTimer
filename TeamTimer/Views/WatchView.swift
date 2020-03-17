@@ -10,6 +10,8 @@ import SwiftUI
 struct WatchView: View {
     @ObservedObject var watch: Watch
 
+    var onRemoveWatch: ((Watch) -> Void)?
+
     @ViewBuilder
     var body: some View {
         if self.watch.started {
@@ -21,7 +23,7 @@ struct WatchView: View {
 
     private var timerView: some View {
         VStack(spacing: 0.0) {
-            TimerView(watch: self.watch)
+            TimerView(watch: self.watch, onRemoveWatch: self.onRemoveWatch)
             ListSeparator()
         }
     }

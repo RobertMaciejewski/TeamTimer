@@ -13,7 +13,7 @@ struct ContainerView: View {
     var body: some View {
         VStack(spacing: 0) {
             ForEach(self.world.watches, id: \.id) { watch in
-                WatchView(watch: watch)
+                WatchView(watch: watch, onRemoveWatch: self.removeWatch)
             }
         }
             .frame(minWidth: 400)
@@ -21,6 +21,10 @@ struct ContainerView: View {
 
     private func addWatch() {
         self.world.addWatch()
+    }
+
+    private func removeWatch(_ watch: Watch) {
+        self.world.remove(watch: watch)
     }
 }
 

@@ -15,10 +15,7 @@ struct TimerConfigView: View {
         LargeTextFieldView(
             stringValue: self.$watch.targetTimeText,
             placeholderString: "Add New Timer",
-            onCommit: {
-                self.watch.commitTargetTime()
-                self.watch.start()
-            }
+            onCommit: { self.watch.start() }
         )
             .frame(height: 80)
             .frame(maxWidth: .infinity)

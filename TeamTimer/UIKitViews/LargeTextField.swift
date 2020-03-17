@@ -58,8 +58,9 @@ extension LargeTextField: NSTextFieldDelegate {
     }
 
     func controlTextDidEndEditing(_ obj: Notification) {
+        let canCommit = self.editing
         self.editing = false
-        self.onCommit?()
+        if canCommit { self.onCommit?() }
     }
 
     func controlTextDidChange(_ obj: Notification) {

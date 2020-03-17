@@ -8,8 +8,10 @@
 import Combine
 import Foundation
 
-class Watch: ObservableObject {
+class Watch: ObservableObject, Equatable {
     static let refreshRate: TimeInterval = 0.1
+
+    static func == (lhs: Watch, rhs: Watch) -> Bool { lhs.id == rhs.id }
 
     let id: Int
 
@@ -20,6 +22,7 @@ class Watch: ObservableObject {
     @Published var targetTimeText: String = ""
     @Published var targetTime: TimeInterval? = nil
     @Published var started: Bool = false
+    @Published var suspended: Bool = false
     @Published var finished: Bool = false
 
     private var targetTimeConfig = CurrentValueSubject<TimeInterval?, Never>(nil)
@@ -30,10 +33,12 @@ class Watch: ObservableObject {
         self.id = id
         self.bindTextToTime().store(in: &self.cancellables)
         self.formatTime().store(in: &self.cancellables)
+        self.watchSuspension().store(in: &self.cancellables)
         self.watchCompletion().store(in: &self.cancellables)
     }
 
     func start() {
+        self.commitTargetTime()
         let timer: TimerDevice
         if let target = self.targetTime {
             timer = TimerDevice(target: Date() + target, direction: .down)
@@ -44,7 +49,11 @@ class Watch: ObservableObject {
         self.timer = timer
     }
 
-    func commitTargetTime() {
+    func interrupt() {
+        self.timer?.interrupt()
+    }
+
+    private func commitTargetTime() {
         self.targetTime = self.targetTimeConfig.value
     }
 
@@ -55,10 +64,19 @@ class Watch: ObservableObject {
             .subscribe(self.targetTimeConfig)
     }
 
+    private func watchSuspension() -> AnyCancellable {
+        self.$timer
+            .map { $0?.$suspended.eraseToAnyPublisher() ?? Just(false).eraseToAnyPublisher() }
+            .switchToLatest()
+            .receive(on: DispatchQueue.main)
+            .sink { self.suspended = $0 }
+    }
+
     private func watchCompletion() -> AnyCancellable {
         self.$timer
             .map { $0?.$finished.eraseToAnyPublisher() ?? Just(false).eraseToAnyPublisher() }
             .switchToLatest()
+            .receive(on: DispatchQueue.main)
             .sink { self.finished = $0 }
     }
 
@@ -67,6 +85,7 @@ class Watch: ObservableObject {
             .map { $0?.time.eraseToAnyPublisher() ?? Empty().eraseToAnyPublisher() }
             .switchToLatest()
             .map { self.timeConverter.encode(value: $0) }
+            .receive(on: DispatchQueue.main)
             .sink { self.text = $0 ?? "" }
     }
 }

@@ -13,14 +13,21 @@ private func combine<P: Publisher, S, F>(sequence: [P]) -> AnyPublisher<[S], F> 
 }
 
 class World: ObservableObject {
-    @Published var watches: [Watch] = []
+    @Published var watchRepo: [Int: Watch] = [:]
     @Published var hasUnstartedWatch: Bool = false
 
+    var watches: [Watch] { self.watchRepo.values.sorted { $0.id < $1.id } }
+    var watchesPublisher: AnyPublisher<[Watch], Never> {
+        self.$watchRepo.map { $0.values.sorted { $0.id < $1.id } }.eraseToAnyPublisher()
+    }
+
     private var addingWatchRequested = PassthroughSubject<Void, Never>()
+    private var removingWatchRequested = PassthroughSubject<Watch, Never>()
     private var cancellables: [AnyCancellable] = []
 
     init() {
         self.manageAddingWatch().store(in: &self.cancellables)
+        self.manageRemovingWatch().store(in: &self.cancellables)
         self.watchUnstartedWatches().store(in: &self.cancellables)
         self.$hasUnstartedWatch.sink { if !$0 { self.addWatch() } }.store(in: &self.cancellables)
     }
@@ -29,8 +36,12 @@ class World: ObservableObject {
         self.addingWatchRequested.send()
     }
 
+    func remove(watch: Watch) {
+        self.removingWatchRequested.send(watch)
+    }
+
     private func watchUnstartedWatches() -> AnyCancellable {
-        self.$watches
+        self.watchesPublisher
             .map { combine(sequence: $0.map { $0.$started }) }
             .switchToLatest()
             .map { !$0.allSatisfy { $0 } }
@@ -39,7 +50,13 @@ class World: ObservableObject {
 
     private func manageAddingWatch() -> AnyCancellable {
         self.addingWatchRequested
-            .combineLatest(self.$watches) { _, watches in watches + [Watch(id: watches.count)] }
-            .sink { self.watches = $0 }
+            .map { 1 }
+            .scan(0) { $0 + $1 }
+            .sink { self.watchRepo[$0] = Watch(id: $0) }
+    }
+
+    private func manageRemovingWatch() -> AnyCancellable {
+        self.removingWatchRequested
+            .sink { self.watchRepo.removeValue(forKey: $0.id) }
     }
 }
