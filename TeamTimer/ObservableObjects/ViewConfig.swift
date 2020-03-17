@@ -11,7 +11,7 @@ import Combine
 class ViewConfig: ObservableObject {
     struct FontSizes {
         var timer: CGFloat = 32
-        var config: CGFloat = 16
+        var config: CGFloat = 24
     }
 
     @Published var fontSizes = FontSizes()

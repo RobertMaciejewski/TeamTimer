@@ -13,11 +13,11 @@ class Watch: ObservableObject {
 
     let id: Int
 
+    @Published var timer: TimerDevice? {
+        didSet { self.started = self.timer != nil }
+    }
     @Published var text: String = ""
     @Published var targetTimeText: String = ""
-    @Published var time: TimeInterval? = nil {
-        didSet { self.started = self.time != nil }
-    }
     @Published var targetTime: TimeInterval? = nil
     @Published var started: Bool = false
 
@@ -32,14 +32,14 @@ class Watch: ObservableObject {
     }
 
     func start() {
-        let startedAt = Date()
-        Timer.publish(every: Watch.refreshRate, on: .main, in: .common)
-            .autoconnect()
-            .map { _ in startedAt.distance(to: Date()) }
-            .map { $0.rounded(.down) }
-            .removeDuplicates()
-            .sink { [weak self] in self?.time = $0 }
-            .store(in: &self.cancellables)
+        let timer: TimerDevice
+        if let target = self.targetTime {
+            timer = TimerDevice(target: Date() + target, direction: .down)
+        } else {
+            timer = TimerDevice(direction: .up)
+        }
+        timer.start()
+        self.timer = timer
     }
 
     func commitTargetTime() {
@@ -54,7 +54,9 @@ class Watch: ObservableObject {
     }
 
     private func formatTime() -> AnyCancellable {
-        self.$time
+        self.$timer
+            .map { $0?.$time.eraseToAnyPublisher() ?? Empty().eraseToAnyPublisher() }
+            .switchToLatest()
             .map { self.timeConverter.encode(value: $0) }
             .sink { self.text = $0 ?? "" }
     }

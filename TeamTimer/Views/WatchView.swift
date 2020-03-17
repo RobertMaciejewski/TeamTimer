@@ -15,7 +15,7 @@ struct WatchView: View {
         if self.watch.started {
             self.timerView
         } else {
-            TimerConfigView(watch: self.watch)
+            self.timerConfigView
         }
     }
 
@@ -24,6 +24,10 @@ struct WatchView: View {
             TimerView(watch: self.watch)
             ListSeparator()
         }
+    }
+
+    private var timerConfigView: some View {
+        TimerConfigView(watch: self.watch)
     }
 }
 

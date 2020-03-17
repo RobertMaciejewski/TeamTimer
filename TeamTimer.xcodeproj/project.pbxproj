@@ -10,6 +10,10 @@
 		F54763EA241CC77A003CD306 /* World.swift in Sources */ = {isa = PBXBuildFile; fileRef = F54763E9241CC77A003CD306 /* World.swift */; };
 		F54763ED241D2D93003CD306 /* Watch.swift in Sources */ = {isa = PBXBuildFile; fileRef = F54763EC241D2D93003CD306 /* Watch.swift */; };
 		F54763F0241DDEE9003CD306 /* TimerConfigView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F54763EF241DDEE9003CD306 /* TimerConfigView.swift */; };
+		F54D0D7A241FBAB700897AAA /* LargeTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = F54D0D79241FBAB700897AAA /* LargeTextField.swift */; };
+		F54D0D7C242059F900897AAA /* LargeTextField.xib in Resources */ = {isa = PBXBuildFile; fileRef = F54D0D7B242059F900897AAA /* LargeTextField.xib */; };
+		F54D0D7E2420A4D500897AAA /* LargeTextFieldView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F54D0D7D2420A4D500897AAA /* LargeTextFieldView.swift */; };
+		F5536FD3241F0F8600C3BBC2 /* TimerDevice.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5536FD2241F0F8600C3BBC2 /* TimerDevice.swift */; };
 		F59F9788241E133F009F46A0 /* ListSeparator.swift in Sources */ = {isa = PBXBuildFile; fileRef = F59F9787241E133F009F46A0 /* ListSeparator.swift */; };
 		F59F978A241E13B0009F46A0 /* WatchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F59F9789241E13B0009F46A0 /* WatchView.swift */; };
 		F59F978C241E14BE009F46A0 /* TimerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F59F978B241E14BE009F46A0 /* TimerView.swift */; };
@@ -45,6 +49,10 @@
 		F54763E9241CC77A003CD306 /* World.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = World.swift; sourceTree = "<group>"; };
 		F54763EC241D2D93003CD306 /* Watch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Watch.swift; sourceTree = "<group>"; };
 		F54763EF241DDEE9003CD306 /* TimerConfigView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerConfigView.swift; sourceTree = "<group>"; };
+		F54D0D79241FBAB700897AAA /* LargeTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LargeTextField.swift; sourceTree = "<group>"; };
+		F54D0D7B242059F900897AAA /* LargeTextField.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LargeTextField.xib; sourceTree = "<group>"; };
+		F54D0D7D2420A4D500897AAA /* LargeTextFieldView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LargeTextFieldView.swift; sourceTree = "<group>"; };
+		F5536FD2241F0F8600C3BBC2 /* TimerDevice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerDevice.swift; sourceTree = "<group>"; };
 		F59F9787241E133F009F46A0 /* ListSeparator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListSeparator.swift; sourceTree = "<group>"; };
 		F59F9789241E13B0009F46A0 /* WatchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchView.swift; sourceTree = "<group>"; };
 		F59F978B241E14BE009F46A0 /* TimerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerView.swift; sourceTree = "<group>"; };
@@ -97,6 +105,7 @@
 				F54763E9241CC77A003CD306 /* World.swift */,
 				F54763EC241D2D93003CD306 /* Watch.swift */,
 				F59F978D241E1FAF009F46A0 /* ViewConfig.swift */,
+				F5536FD2241F0F8600C3BBC2 /* TimerDevice.swift */,
 			);
 			path = ObservableObjects;
 			sourceTree = "<group>";
@@ -109,8 +118,18 @@
 				F59F9787241E133F009F46A0 /* ListSeparator.swift */,
 				F59F9789241E13B0009F46A0 /* WatchView.swift */,
 				F59F978B241E14BE009F46A0 /* TimerView.swift */,
+				F54D0D7D2420A4D500897AAA /* LargeTextFieldView.swift */,
 			);
 			path = Views;
+			sourceTree = "<group>";
+		};
+		F54D0D78241FBA9500897AAA /* UIKitViews */ = {
+			isa = PBXGroup;
+			children = (
+				F54D0D79241FBAB700897AAA /* LargeTextField.swift */,
+				F54D0D7B242059F900897AAA /* LargeTextField.xib */,
+			);
+			path = UIKitViews;
 			sourceTree = "<group>";
 		};
 		F5B5CD69241C63E90010CE27 = {
@@ -136,6 +155,7 @@
 		F5B5CD74241C63E90010CE27 /* TeamTimer */ = {
 			isa = PBXGroup;
 			children = (
+				F54D0D78241FBA9500897AAA /* UIKitViews */,
 				F54763EE241DDEB7003CD306 /* Views */,
 				F54763EB241D2D71003CD306 /* ObservableObjects */,
 				F5B5CD75241C63E90010CE27 /* AppDelegate.swift */,
@@ -281,6 +301,7 @@
 				F5B5CD83241C63EB0010CE27 /* Main.storyboard in Resources */,
 				F5B5CD80241C63EB0010CE27 /* Preview Assets.xcassets in Resources */,
 				F5B5CD7D241C63EB0010CE27 /* Assets.xcassets in Resources */,
+				F54D0D7C242059F900897AAA /* LargeTextField.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -311,10 +332,13 @@
 				F54763F0241DDEE9003CD306 /* TimerConfigView.swift in Sources */,
 				F59F9788241E133F009F46A0 /* ListSeparator.swift in Sources */,
 				F5B5CD76241C63E90010CE27 /* AppDelegate.swift in Sources */,
+				F54D0D7E2420A4D500897AAA /* LargeTextFieldView.swift in Sources */,
 				F54763EA241CC77A003CD306 /* World.swift in Sources */,
 				F59F978E241E1FAF009F46A0 /* ViewConfig.swift in Sources */,
 				F54763ED241D2D93003CD306 /* Watch.swift in Sources */,
+				F5536FD3241F0F8600C3BBC2 /* TimerDevice.swift in Sources */,
 				F5B5CD7B241C63E90010CE27 /* TeamTimer.xcdatamodeld in Sources */,
+				F54D0D7A241FBAB700897AAA /* LargeTextField.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
