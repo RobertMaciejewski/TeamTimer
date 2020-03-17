@@ -10,13 +10,17 @@ import SwiftUI
 struct TimerView: View {
     @EnvironmentObject var viewConfig: ViewConfig
     @ObservedObject var watch: Watch
+    @ObservedObject var toggler = Toggler(duration: 0.7)
 
     var body: some View {
-        Text(self.watch.text)
+        Text(self.watch.finished && self.toggler.value ? "Beep!!" : self.watch.text)
             .font(.system(size: self.viewConfig.fontSizes.timer))
-            .frame(height: 60)
-            .frame(minWidth: 200, maxWidth: .infinity)
+            .frame(minWidth: 300, minHeight: 60)
             .padding()
+            .foregroundColor(self.watch.finished ? Color.red : Color.black)
+            .animation(nil)
+            .scaleEffect(self.watch.finished ? 2 : 1)
+            .animation(Animation.spring(response: 0.15, dampingFraction: 0.1).repeatForever(autoreverses: false))
     }
 }
 

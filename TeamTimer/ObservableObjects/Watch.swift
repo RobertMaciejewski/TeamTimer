@@ -20,6 +20,7 @@ class Watch: ObservableObject {
     @Published var targetTimeText: String = ""
     @Published var targetTime: TimeInterval? = nil
     @Published var started: Bool = false
+    @Published var finished: Bool = false
 
     private var targetTimeConfig = CurrentValueSubject<TimeInterval?, Never>(nil)
     private var timeConverter = TimeConverter()
@@ -29,6 +30,7 @@ class Watch: ObservableObject {
         self.id = id
         self.bindTextToTime().store(in: &self.cancellables)
         self.formatTime().store(in: &self.cancellables)
+        self.watchCompletion().store(in: &self.cancellables)
     }
 
     func start() {
@@ -53,9 +55,16 @@ class Watch: ObservableObject {
             .subscribe(self.targetTimeConfig)
     }
 
+    private func watchCompletion() -> AnyCancellable {
+        self.$timer
+            .map { $0?.$finished.eraseToAnyPublisher() ?? Just(false).eraseToAnyPublisher() }
+            .switchToLatest()
+            .sink { self.finished = $0 }
+    }
+
     private func formatTime() -> AnyCancellable {
         self.$timer
-            .map { $0?.$time.eraseToAnyPublisher() ?? Empty().eraseToAnyPublisher() }
+            .map { $0?.time.eraseToAnyPublisher() ?? Empty().eraseToAnyPublisher() }
             .switchToLatest()
             .map { self.timeConverter.encode(value: $0) }
             .sink { self.text = $0 ?? "" }

@@ -26,6 +26,7 @@
 		F5B5CD83241C63EB0010CE27 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F5B5CD81241C63EB0010CE27 /* Main.storyboard */; };
 		F5B5CD8F241C63EB0010CE27 /* TeamTimerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5B5CD8E241C63EB0010CE27 /* TeamTimerTests.swift */; };
 		F5B5CD9A241C63EB0010CE27 /* TeamTimerUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5B5CD99241C63EB0010CE27 /* TeamTimerUITests.swift */; };
+		F5F095D92420FA2E007D170C /* Toggler.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5F095D82420FA2E007D170C /* Toggler.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -72,6 +73,7 @@
 		F5B5CD95241C63EB0010CE27 /* TeamTimerUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TeamTimerUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		F5B5CD99241C63EB0010CE27 /* TeamTimerUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamTimerUITests.swift; sourceTree = "<group>"; };
 		F5B5CD9B241C63EB0010CE27 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F5F095D82420FA2E007D170C /* Toggler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Toggler.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -106,6 +108,7 @@
 				F54763EC241D2D93003CD306 /* Watch.swift */,
 				F59F978D241E1FAF009F46A0 /* ViewConfig.swift */,
 				F5536FD2241F0F8600C3BBC2 /* TimerDevice.swift */,
+				F5F095D82420FA2E007D170C /* Toggler.swift */,
 			);
 			path = ObservableObjects;
 			sourceTree = "<group>";
@@ -332,6 +335,7 @@
 				F54763F0241DDEE9003CD306 /* TimerConfigView.swift in Sources */,
 				F59F9788241E133F009F46A0 /* ListSeparator.swift in Sources */,
 				F5B5CD76241C63E90010CE27 /* AppDelegate.swift in Sources */,
+				F5F095D92420FA2E007D170C /* Toggler.swift in Sources */,
 				F54D0D7E2420A4D500897AAA /* LargeTextFieldView.swift in Sources */,
 				F54763EA241CC77A003CD306 /* World.swift in Sources */,
 				F59F978E241E1FAF009F46A0 /* ViewConfig.swift in Sources */,
